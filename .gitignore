@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+*.pt
+.ipynb_checkpoints/
+.DS_Store
