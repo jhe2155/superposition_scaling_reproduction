@@ -15,12 +15,8 @@ This paper uses simple, tied-weight autoencoder toy models to investigate loss i
 | <img src="https://raw.githubusercontent.com/liuyz0/SuperpositionScaling/main/figures/Fig-3-3.png" width="420"> | <img src="figures/fig3a.png" width="200"> <img src="figures/fig3b.png" width="200"> |
 | Figure 3a–b | Figure 3a–b |
 
-3a. Superposition can be tuned by adjusting weight decay. Positive weight decay produces weak superposition, with the most frequent features achieving a row norm of close to 1 while less frequent features are ignored. Negative weight decay induces strong superposition instead, with all features represented. 
-
-phi_1/2 = 0.07 at gamma = +1 vs 1.00 at gamma = -1 (m = 100, alpha = 1), where phi_1/2 is the fraction of features with norm > 1/2, which the model successfully represents. 
-
-3b: The method of tuning superposition with weight decay is robust to changes in model size. phi_1/2 drops from 1 to ~m/n as gamma increases; transition around gamma in [-0.3, 0.3];
-wider models stay in superposition at larger gamma.
+- 3a: same qualitative split. With negative weight decay the row norms spread wider (about 0.75–1.2, with a small bump near 0.9) than the paper's tight cluster just above 1.
+- 3b: closely matches the paper.
 
 ### Figure 4: Weak superposition
 
@@ -29,10 +25,8 @@ wider models stay in superposition at larger gamma.
 | <img src="https://raw.githubusercontent.com/liuyz0/SuperpositionScaling/main/figures/Fig-4-4.png" width="420"> | <img src="figures/fig4a.png" width="200"> <img src="figures/fig4b.png" width="200"> |
 | Figure 4a–b | Figure 4a–b |
 
-
-4a: In the weak superposition regime, the loss of 510 runs with weight decay > 0 across various model sizes along with theory curves that predict a power law distribution scaling is plotted. 
-
-4b: 9 datapoints closest to the no superposition case are analyzed and the scaling exponent of their loss is extracted and compared to the expected exponent from data sampling. 
+- 4a: same trend, with points following the theory curves.
+- 4b: the fitted exponents mostly sit above the α_m = α − 1 line, while the paper's lie closer to it. The selected points cover α = 1.5–2 (the paper's reach down to 1.25), and one point (α = 2, α_m ≈ 1.35) falls above the plotted range.
 
 ### Figure 5: Strong superposition
 
@@ -41,10 +35,8 @@ wider models stay in superposition at larger gamma.
 | <img src="https://raw.githubusercontent.com/liuyz0/SuperpositionScaling/main/figures/Fig-5-2.png" width="420"> | <img src="figures/fig5a.png" width="420"><br><img src="figures/fig5c.png" width="240"> |
 | Figure 5a–e (panels a–c reproduced) | Figure 5a–b (top), 5c (bottom) |
 
-Strong superposition regime: 
-5a-b: Row norm distribution is bimodally distributed around 1, with more frequent features taking on larger norms. 
-
-5c: Variance for important features is smaller than it would be for random unit vectors. 
+- 5a–b: same bimodal row-norm distribution around 1. The peaks are closer to 1 than in the paper, and the panels are side by side instead of stacked.
+- 5c: higher α gives a higher ratio, as in the paper. For small α at the largest m, the paper's ratio drops toward 0, while here it dips at m ≈ 40 and rises back to about 0.8 at m = 100. This reproduction uses γ = −0.56.
 
 ## Setup
 
